@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tråkighets-krossaren 3000</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74abe2, #5563c1);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            background-color: #ff4747;
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .activity-box {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .clicker-box {
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+        }
+        #clickBtn {
+            background-color: #4ecdc4;
+        }
+        #clickBtn:hover {
+            background-color: #36b3a8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Uttråkad? 🥱</h1>
+        <p>Tryck på knappen för att få något att göra!</p>
+        
+        <button onclick="genereraAktivitet()">Ge mig ett uppdrag!</button>
+        
+        <div class="activity-box" id="activityDisplay">
+            Klicka på knappen ovanför för att starta...
+        </div>
+
+        <div class="clicker-box">
+            <h3>Meningslös klickare 🖱️</h3>
+            <p>Antal klick: <span id="clickCount">0</span></p>
+            <button id="clickBtn" onclick="klickaHär()">KLICKA MIG!</button>
+        </div>
+    </div>
+
+    <script>
+        // Lista med slumpmässiga saker att göra
+        const aktiviteter = [
+            "Gör 10 armhävningar just nu! 💪",
+            "Drick ett stort glas vatten. 💧",
+            "Gå och rensa en låda du inte rört på ett år. 📦",
+            "Lär dig räkna till 10 på japanska: Ichi, Ni, San, Shi, Go, Roku, Shichi, Hachi, Kyu, Ju! 🇯🇵",
+            "Sätt på din favoritlåt och dansa galet i en minut. 💃",
+            "Skriv ett oväntat och snällt SMS till en kompis eller familjemedlem. ❤️",
+            "Försök att balansera på ett ben med stängda ögon i 30 sekunder. 🧘",
+            "Gör en perfekt papperssvala och se hur långt den kan flyga. ✈️",
+            "Sitt helt stilla och blunda i 2 minuter utan att somna. ⏱️"
+        ];
+
+        function genereraAktivitet() {
+            const slumpIndex = Math.floor(Math.random() * aktiviteter.length);
+            document.getElementById('activityDisplay').innerText = aktiviteter[slumpIndex];
+        }
+
+        let klick = 0;
+        function klickaHär() {
+            klick++;
+            document.getElementById('clickCount').innerText = klick;
+            
+            // Slumpa bakgrundsfärg på klickknappen varje gång man klickar
+            const slumpFärg = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.getElementById('clickBtn').style.backgroundColor = slumpFärg;
+        }
+    </script>
+
+</body>
+</html>
